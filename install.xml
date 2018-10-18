@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <modification>
+  <name>Best Viewed Products</name>
+  <code>BestViewedProducts</code>
+  <version>1.0</version>
+  <author>Software Developer</author>
+  <link>http://#</link>
+
+  <file path="catalog/controller/product/product.php">
+    <operation>
+      <search><![CDATA[
+         $this->load->model('catalog/category');
+      ]]></search>
+      <add position="after"><![CDATA[
+        /* Adding count for number viewed poruct*/
+        $this->load->model('extension/module/best_viewed_products');
+        $this->model_extension_module_best_viewed_products->updateViewedProduct($this->request->get['product_id']);
+      ]]></add>
+    </operation>
+  </file>
+
+</modification>
